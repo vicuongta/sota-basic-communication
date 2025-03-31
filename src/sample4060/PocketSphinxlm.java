@@ -37,7 +37,11 @@ public class PocketSphinxlm {
         PocketSphinx sphinx = new PocketSphinx();
 
         // Initialize PocketSphinx
-        long decoderPtr = sphinx.initialize_lm(SPHINX_ROOT+"en-us/en-us", SPHINX_ROOT+"en-us/en-us.lm.bin", SPHINX_ROOT+"en-us/cmudict-en-us.dict");
+        long decoderPtr = sphinx.initialize_lm(
+            SPHINX_ROOT+"en-us/en-us", 
+            SPHINX_ROOT+"en-us/en-us.lm.bin", 
+            SPHINX_ROOT+"en-us/cmudict-en-us.dict"
+        );
         if (decoderPtr == 0) {
             System.err.println("Failed to initialize PocketSphinx");
             return;

@@ -133,6 +133,10 @@
                 </antcall>
 
                 <!-- assignment 4 JARs -->
+                <antcall target="__make_jar">
+                        <param name="jar.class" value="AS4.Main" />
+                        <param name="jar.name" value="AS4-main.jar" />
+                </antcall>
 
                 <!-- assignment 3 JARs -->
                 <antcall target="__make_jar">
