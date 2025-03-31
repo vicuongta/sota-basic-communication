@@ -87,7 +87,7 @@ class PrintResult extends LeafTask<Blackboard> {
 }
 
 public class GDXaiSample {
-
+	// Tree structure here
     public static BehaviorTree<Blackboard> makeTree(Blackboard bb) {
 		@SuppressWarnings("unchecked")  // just to suppress the annoying message
 		BehaviorTree<Blackboard> tree = new BehaviorTree<>(new Selector<>(

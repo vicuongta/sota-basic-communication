@@ -6,8 +6,8 @@
 
         <!--ip -->
         <!--- CONFIGURE THIS for your Sota -->
-        <property name="scp.server" value="192.168.0.23"/>  
-        <!-- <property name="scp.server" value="10.127.19.46"/>    -->
+        <!-- <property name="scp.server" value="192.168.0.23"/>   -->
+        <property name="scp.server" value="10.0.0.206"/>   
          
         <!--scp credentials -->
         <property name="scp.edison.user" value="root"  />
@@ -106,10 +106,15 @@
                         <param name="jar.name" value="sample4060-face.jar" />
                 </antcall>
 
+                <antcall target="__make_jar">
+                        <param name="jar.class" value="sample4060.CameraSnapTest" />
+                        <param name="jar.name" value="sample4060-camera.jar" />
+                </antcall>
+
                 <!-- <antcall target="__make_jar">
                         <param name="jar.class" value="sample4060.SotaTestProgram" />
                         <param name="jar.name" value="sample4060-sotaTest.jar" />
-                </antcall>
+                </antcall> 
 
                 <antcall target="__make_jar">
                         <param name="jar.class" value="jp.vstone.sotasample.RecordMotion" />

@@ -5,7 +5,7 @@ import jp.vstone.RobotLib.*;
 import jp.vstone.camera.CameraCapture;
 
 public class CameraSnapTest {
-	static final String TAG = "AS3_5";   // set this to support the Sota logging system
+	static final String TAG = "CameraSnapTest";   // set this to support the Sota logging system
 
 	// private variables
 	CRobotPose _sotaPose = new CRobotPose();
