@@ -58,7 +58,7 @@ public class marysample {
 
             // mary.setAudioEffects("Volume(amount:2.0)+Rate(durScale:1.5)+F0Scale(f0Scale:1.2)"); // you can combine effects using the syntax here in this example
             // mary.setAudioEffects("Volume(amount:1.0)+Robot(amount:100)+TractScaler(amount:.5)");
-            mary.setAudioEffects("f0Scale(f0scale:2)+TractScaler(amount:1.2)");
+            // mary.setAudioEffects("f0Scale(f0scale:2)+TractScaler(amount:1.2)");
             // Generate speech from text
             AudioInputStream audio = mary.generateAudio("It's a trap!");
 

@@ -1,33 +1,57 @@
 package AS4.behaviors;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import com.badlogic.gdx.ai.btree.BehaviorTree;
 import com.badlogic.gdx.ai.btree.branch.Sequence;
 
 import AS4.RobotBlackboard;
-
-import AS4.tasks.quiz.AskQuestionQuiz;
-import AS4.tasks.quiz.ListenKeywordQuiz;
-import AS4.tasks.quiz.CheckQuizAnswer;
+import AS4.tasks.AskQuiz;
+import AS4.tasks.CheckQuizAnswer;
+import AS4.tasks.ListenQuizKws;
 
 public class QuizGameBehavior {
+    private static String filePath = "/home/root/sotaprograms/resources/sound/a4-sound/quiz/questions/";
+
+    public static class QuizEntry {
+        public String wavPath;
+        public String answer;
+
+        public QuizEntry(String wavPath, String answer) {
+            this.wavPath = wavPath;
+            this.answer = answer;
+        }
+    }
 
     public static BehaviorTree<RobotBlackboard> createQuizTree(RobotBlackboard bb) {
-        @SuppressWarnings("unchecked")  // just to suppress the annoying message
-        BehaviorTree<RobotBlackboard> tree = new BehaviorTree<RobotBlackboard>(
-            new Sequence<RobotBlackboard>(
-                new AskQuestionQuiz("What is 2 + 2? A: 3  B: 4  C: 100", "b"),
-                new ListenKeywordQuiz(),
-                new CheckQuizAnswer("b"),
+        List<QuizEntry> allQuestions = new ArrayList<>();
+        allQuestions.add(new QuizEntry("q1.wav", "Apple"));
+        allQuestions.add(new QuizEntry("q2.wav", "Banana"));
+        allQuestions.add(new QuizEntry("q3.wav", "Summer"));
+        allQuestions.add(new QuizEntry("q4.wav", "Purple"));
+        allQuestions.add(new QuizEntry("q5.wav", "Dog"));
+        allQuestions.add(new QuizEntry("q6.wav", "Water"));
+        allQuestions.add(new QuizEntry("q7.wav", "Blue"));
+        allQuestions.add(new QuizEntry("q8.wav", "Paris"));
+        allQuestions.add(new QuizEntry("q9.wav", "Mars"));
+        allQuestions.add(new QuizEntry("q10.wav", "Four"));
 
-                new AskQuestionQuiz("Which planet is known as the Red Planet? A: Mars  B: Venus", "a"),
-                new ListenKeywordQuiz(),
-                new CheckQuizAnswer("a"),
 
-                new AskQuestionQuiz("What is the capital of France? A: Rome  B: Paris", "b"),
-                new ListenKeywordQuiz(),
-                new CheckQuizAnswer("b")
-            )
-        );
+        Collections.shuffle(allQuestions); // randomize 5 questions
+        List<QuizEntry> selectedQuestions = allQuestions.subList(0, 5);
+        bb.totalQuestions = selectedQuestions.size(); // set the number of questions to ask
+        
+        // Create the behavior tree sequence
+        Sequence<RobotBlackboard> sequence = new Sequence<>();
+        for (QuizEntry entry : selectedQuestions) {
+            sequence.addChild(new AskQuiz(filePath + entry.wavPath, entry.answer));
+            sequence.addChild(new ListenQuizKws());
+            sequence.addChild(new CheckQuizAnswer());
+        }
+
+        BehaviorTree<RobotBlackboard> tree = new BehaviorTree<>(sequence);
         tree.setObject(bb);
         return tree;
     }

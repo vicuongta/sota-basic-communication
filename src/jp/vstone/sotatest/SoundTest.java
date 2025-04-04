@@ -19,7 +19,8 @@ public class SoundTest {
 	public static void main(String args[]){
 		CRobotUtil.Log(TAG, "Start " + TAG);
 		
-		CPlayWave.PlayWave_wait("sound/chanto_kao1.wav");
+		CPlayWave.PlayWave_wait("sound/sota-voice.wav");
+		// CPlayWave.PlayWave_wait("sound/chanto_kao1.wav");
 		CRobotUtil.Log(TAG, "Servo Off");
 	}
 	

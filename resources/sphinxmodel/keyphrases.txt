@@ -1,6 +1,18 @@
 stop /1e-10/
 dance /1e-10/
 its a trap /1e-65/
-a /1e-20/
-b /1e-20/
-c /1e-20/
+
+hey buddy /1e-20/
+
+quiz /1e-10/
+
+four /1e-10/
+mars /1e-10/
+paris /1e-10/
+water /1e-10/
+dog /1e-10/
+banana /1e-10/
+summer /1e-10/
+triangle /1e-10/
+apple /1e-10/
+blue /1e-10/
