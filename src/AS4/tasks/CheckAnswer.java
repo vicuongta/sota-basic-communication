@@ -7,7 +7,6 @@ import AS4.RobotBlackboard;
 import AS4.motions.CheerUpMotion;
 import AS4.motions.ComfortMotion;
 import jp.vstone.RobotLib.CPlayWave;
-import jp.vstone.RobotLib.CRobotUtil;
 
 public class CheckAnswer extends LeafTask<RobotBlackboard> {
     private String expectedAnswer;

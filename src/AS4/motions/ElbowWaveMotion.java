@@ -4,14 +4,13 @@ import java.awt.Color;
 
 import jp.vstone.RobotLib.*;
 
-public class QuizTime {
-
-    static final String TAG = "QuizTime";   // set this to support the Sota logging system
+public class ElbowWaveMotion {
+    static final String TAG = "ElbowWave";   // set this to support the Sota logging system
     static final String RESOURCES = "../resources/";
-    static final String SOUNDS = RESOURCES + "sound/a4-sound/mode/quiz_mode";
+    static final String SOUNDS = RESOURCES + "sound/a4-sound/greet/greeting.wav";
 
     public void run() {
-        System.out.println("QuizTime running...");
+        System.out.println("ElbowWave running...");
 
         CRobotUtil.Log(TAG, "Start " + TAG);
 
@@ -27,38 +26,37 @@ public class QuizTime {
             CRobotUtil.Log(TAG, "Servo On");
             motion.ServoOn();
 
-            pose.setLED_Sota(Color.GREEN, Color.GREEN, 255, Color.GREEN);
+            pose.setLED_Sota(Color.WHITE, Color.WHITE, 255, Color.WHITE);
             motion.play(pose, 1000);
 
-            int index = (int) (Math.random() * 2) + 1;
-            CPlayWave.PlayWave(SOUNDS + String.valueOf(index) +".wav");
+            CPlayWave.PlayWave(SOUNDS);
             
             pose = new CRobotPose();
             pose.SetPose(new Byte[] {1, 2, 3, 4, 5, 6, 7, 8}, 
-                new Short[]{0, -791, -666, 757, 718, 13, -36, 7}
+                new Short[]{0, -714, -659, -267, 480, 20, -161, 8}
             ); // initial pose
             motion.play(pose, 1000);
             motion.waitEndinterpAll();   // also async public boolean isEndInterpAll()
             
-            boolean raise = true;
-            for (int i = 0; i < 5; i++) {
-                if (raise) {
+            boolean wave = true;
+            for (int i = 0; i < 7; i++) {
+                if (wave) {
                     pose.SetPose(new Byte[] {1, 2, 3, 4, 5, 6, 7, 8}, 
-                        new Short[]{11, -307, -860, 222, 857, 14, -149, 8}
+                        new Short[]{0, -714, -659, -267, 250, 20, -161, 8}
                     ); // initial pose
                 }
                 else {
                     pose.SetPose(new Byte[] {1, 2, 3, 4, 5, 6, 7, 8}, 
-                        new Short[]{-2, 303, -480, -325, 415, 19, -148, 8}
+                        new Short[]{0, -714, -659, -267, 480, 20, -161, 8}
                     ); // initial pose
                 }
-                raise = !raise;
+                wave = !wave;
                 motion.play(pose, 1000);
                 motion.waitEndinterpAll();
             }
         
             pose.SetPose(new Byte[] {1, 2, 3, 4, 5, 6, 7, 8}, 
-                new Short[]{0, -791, -666, 757, 718, 13, -36, 7}
+                new Short[]{0, -714, -659, -267, 480, 20, -161, 8}
             ); // initial pose
 
             motion.play(pose, 1000);
@@ -75,7 +73,7 @@ public class QuizTime {
     }
 
     public static void main(String[] args) {
-        QuizTime quiz = new QuizTime();
-        quiz.run();
+        ElbowWaveMotion elbowWave = new ElbowWaveMotion();
+        elbowWave.run();
     }
 }

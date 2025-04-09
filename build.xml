@@ -78,6 +78,16 @@
                         <param name="jar.class" value="sample4060.FaceDetection" />
                         <param name="jar.name" value="sample4060-face.jar" />
                 </antcall>
+
+                <antcall target="__make_jar">
+                        <param name="jar.class" value="jp.vstone.sotasample.FaceTrackingSample" />
+                        <param name="jar.name" value="sotasample-track.jar" />
+                </antcall>
+
+                <antcall target="__make_jar">
+                        <param name="jar.class" value="jp.vstone.sotasample.FaceAuthenticationSample2" />
+                        <param name="jar.name" value="sotasample-auth.jar" />
+                </antcall>
                 
                 <!-- <antcall target="__make_jar">
                         <param name="jar.class" value="sample4060.Sample" />
