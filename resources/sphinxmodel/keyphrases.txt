@@ -1,18 +1,50 @@
-stop /1e-10/
-dance /1e-10/
-its a trap /1e-65/
+stop /1e-3/
+hey buddy /1e-2/
+quiz /1e-3/
 
-hey buddy /1e-20/
+four /1e-3/
+one /1e-2/
+two /1e-2/
+three /1e-2/
 
-quiz /1e-10/
+mars /1e-3/
+venus /1e-2/
+earth /1e-2/
+saturn /1e-2/
 
-four /1e-10/
-mars /1e-10/
-paris /1e-10/
-water /1e-10/
-dog /1e-10/
-banana /1e-10/
-summer /1e-10/
-triangle /1e-10/
-apple /1e-10/
-blue /1e-10/
+paris /1e-3/
+ottawa /1e-2/
+madrid /1e-2/
+london /1e-2/
+
+water /1e-3/
+soft drink /1e-2/
+orange juice /1e-2/
+apple juice /1e-2/
+
+dog /1e-3/
+cat /1e-2/
+bird /1e-2/
+reptiles /1e-2/
+
+banana /1e-3/
+apple /1e-2/
+strawberry /1e-2/
+kiwi /1e-2/
+grape /1e-2/
+
+summer /1e-3/
+spring /1e-2/
+autumn /1e-2/
+fall /1e-2/
+winter /1e-2/
+
+triangle /1e-3/
+square /1e-2/
+circle /1e-2/
+rectangle /1e-2/
+
+blue /1e-3/
+green /1e-3/
+red /1e-3/
+yellow /1e-3/

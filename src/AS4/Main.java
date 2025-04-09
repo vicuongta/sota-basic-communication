@@ -5,6 +5,7 @@ import com.badlogic.gdx.ai.btree.branch.Selector;
 import com.badlogic.gdx.ai.btree.Task.Status;
 
 import AS4.behaviors.*;
+import AS4.conditions.HasAnswerDetected;
 
 public class Main {
 

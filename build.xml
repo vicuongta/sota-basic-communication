@@ -74,6 +74,11 @@
         <target name="make_jars" depends="compile">
 
                 <!-- Make a target for each program -->
+                <antcall target="__make_jar">
+                        <param name="jar.class" value="sample4060.FaceDetection" />
+                        <param name="jar.name" value="sample4060-face.jar" />
+                </antcall>
+                
                 <!-- <antcall target="__make_jar">
                         <param name="jar.class" value="sample4060.Sample" />
                         <param name="jar.name" value="sample4060-sample.jar" />
@@ -141,22 +146,47 @@
                         <param name="jar.name" value="AS4-main.jar" />
                 </antcall>
 
-                <!-- assignment 3 JARs -->
-                <!-- <antcall target="__make_jar">
-                        <param name="jar.class" value="AS3Solution.AS3_1" />
-                        <param name="jar.name" value="AS3_1.jar" />
+                <antcall target="__make_jar">
+                        <param name="jar.class" value="AS4.MotionTriggerFaceDetect" />
+                        <param name="jar.name" value="AS4-detect.jar" />
                 </antcall>
 
                 <antcall target="__make_jar">
-                        <param name="jar.class" value="AS3Solution.AS3_2" />
-                        <param name="jar.name" value="AS3_2.jar" />
+                        <param name="jar.class" value="AS4.ElbowWave" />
+                        <param name="jar.name" value="AS4-wave.jar" />
+                </antcall>
+
+                <antcall target="__make_jar">
+                        <param name="jar.class" value="AS4.ComfortMotion" />
+                        <param name="jar.name" value="AS4-comfort.jar" />
+                </antcall>
+
+                <antcall target="__make_jar">
+                        <param name="jar.class" value="AS4.QuizTime" />
+                        <param name="jar.name" value="AS4-quiz.jar" />
+                </antcall>
+
+                <antcall target="__make_jar">
+                        <param name="jar.class" value="AS4.CheerUpMotion" />
+                        <param name="jar.name" value="AS4-cheer.jar" />
+                </antcall>
+
+                <!-- assignment 3 JARs -->
+                <antcall target="__make_jar">
+                        <param name="jar.class" value="AS3Solution.AS3_1" />
+                        <param name="jar.name" value="AS3_1.jar" />
                 </antcall>
 
                 <antcall target="__make_jar">
                         <param name="jar.class" value="AS3Solution.AS3_3" />
                         <param name="jar.name" value="AS3_3.jar" />
                 </antcall>
-                
+
+                <!--  <antcall target="__make_jar">
+                        <param name="jar.class" value="AS3Solution.AS3_2" />
+                        <param name="jar.name" value="AS3_2.jar" />
+                </antcall>
+
                 <antcall target="__make_jar">
                         <param name="jar.class" value="AS3Solution.AS3_4" />
                         <param name="jar.name" value="AS3_4.jar" />

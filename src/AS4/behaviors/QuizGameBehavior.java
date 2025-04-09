@@ -8,9 +8,9 @@ import com.badlogic.gdx.ai.btree.BehaviorTree;
 import com.badlogic.gdx.ai.btree.branch.Sequence;
 
 import AS4.RobotBlackboard;
-import AS4.tasks.AskQuiz;
-import AS4.tasks.CheckQuizAnswer;
-import AS4.tasks.ListenQuizKws;
+import AS4.tasks.AskQuestions;
+import AS4.tasks.CheckAnswer;
+import AS4.tasks.ListenKeyword;
 
 public class QuizGameBehavior {
     private static String filePath = "/home/root/sotaprograms/resources/sound/a4-sound/quiz/questions/";
@@ -46,9 +46,9 @@ public class QuizGameBehavior {
         // Create the behavior tree sequence
         Sequence<RobotBlackboard> sequence = new Sequence<>();
         for (QuizEntry entry : selectedQuestions) {
-            sequence.addChild(new AskQuiz(filePath + entry.wavPath, entry.answer));
-            sequence.addChild(new ListenQuizKws());
-            sequence.addChild(new CheckQuizAnswer());
+            sequence.addChild(new AskQuestions(filePath + entry.wavPath, entry.answer));
+            sequence.addChild(new ListenKeyword());
+            sequence.addChild(new CheckAnswer());
         }
 
         BehaviorTree<RobotBlackboard> tree = new BehaviorTree<>(sequence);

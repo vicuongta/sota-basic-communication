@@ -1,9 +1,11 @@
-package AS4;
+package AS4.conditions;
 
 import com.badlogic.gdx.ai.btree.LeafTask;
 import com.badlogic.gdx.ai.btree.Task;
 
-public class HasAnswerDetected extends LeafTask <RobotBlackboard> {
+import AS4.RobotBlackboard;
+
+public class HasAnswerDetected extends LeafTask<RobotBlackboard> {
     @Override
     public Status execute() {
         RobotBlackboard bb = getObject();

@@ -9,7 +9,7 @@ import pocketsphinx.RecognitionResult;
 
 import javax.sound.sampled.*;
 
-public class ListenQuizKws extends LeafTask<RobotBlackboard> {
+public class ListenKeyword extends LeafTask<RobotBlackboard> {
     final static String SPHINX_ROOT = "/home/root/sotaprograms/resources/sphinxmodel/";
     final static int ms = 128;  // window size to process at a time. longer makes more delay but less processing. 
     final static int SAMPLERATE = 16000; // 8000, 16000, 22050, 44100, stick to 16k unless you know what you are doing
@@ -78,7 +78,7 @@ public class ListenQuizKws extends LeafTask<RobotBlackboard> {
                     System.out.println("Result: " + result.result);
                     if (!result.result.isEmpty()) {
                         keywordDetected = true;
-                        bb.userAnswerQuiz = result.result; // store the result in the blackboard
+                        bb.userAnswer = result.result; // store the result in the blackboard
                         System.out.println("Keyword detected: " + result.result);
     
                         microphone.stop();
@@ -101,6 +101,6 @@ public class ListenQuizKws extends LeafTask<RobotBlackboard> {
 
     @Override
     protected Task<RobotBlackboard> copyTo(Task<RobotBlackboard> task) {
-        return new ListenQuizKws();
+        return new ListenKeyword();
     }
 }
