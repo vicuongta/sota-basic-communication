@@ -74,12 +74,12 @@
         <target name="make_jars" depends="compile">
 
                 <!-- Make a target for each program -->
-                <antcall target="__make_jar">
+                <!-- <antcall target="__make_jar">
                         <param name="jar.class" value="sample4060.FaceDetection" />
                         <param name="jar.name" value="sample4060-face.jar" />
-                </antcall>
+                </antcall> -->
 
-                <antcall target="__make_jar">
+                <!-- <antcall target="__make_jar">
                         <param name="jar.class" value="jp.vstone.sotasample.FaceTrackingSample" />
                         <param name="jar.name" value="sotasample-track.jar" />
                 </antcall>
@@ -87,7 +87,7 @@
                 <antcall target="__make_jar">
                         <param name="jar.class" value="jp.vstone.sotasample.FaceAuthenticationSample2" />
                         <param name="jar.name" value="sotasample-auth.jar" />
-                </antcall>
+                </antcall> -->
                 
                 <!-- <antcall target="__make_jar">
                         <param name="jar.class" value="sample4060.Sample" />
@@ -156,7 +156,7 @@
                         <param name="jar.name" value="AS4-main.jar" />
                 </antcall>
 
-                <antcall target="__make_jar">
+                <!-- <antcall target="__make_jar">
                         <param name="jar.class" value="AS4.MotionTriggerFaceDetect" />
                         <param name="jar.name" value="AS4-detect.jar" />
                 </antcall>
@@ -169,17 +169,17 @@
                 <antcall target="__make_jar">
                         <param name="jar.class" value="AS4.ComfortMotion" />
                         <param name="jar.name" value="AS4-comfort.jar" />
-                </antcall>
+                </antcall> -->
 
                 <antcall target="__make_jar">
-                        <param name="jar.class" value="AS4.QuizTime" />
+                        <param name="jar.class" value="AS4.QuizTimeMotion" />
                         <param name="jar.name" value="AS4-quiz.jar" />
                 </antcall>
 
-                <antcall target="__make_jar">
+                <!-- <antcall target="__make_jar">
                         <param name="jar.class" value="AS4.CheerUpMotion" />
                         <param name="jar.name" value="AS4-cheer.jar" />
-                </antcall>
+                </antcall> -->
 
                 <!-- assignment 3 JARs -->
                 <antcall target="__make_jar">

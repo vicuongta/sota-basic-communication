@@ -8,7 +8,13 @@ public class QuizTimeMotion {
 
     static final String TAG = "QuizTime";   // set this to support the Sota logging system
     static final String RESOURCES = "../resources/";
-    static final String SOUNDS = RESOURCES + "sound/a4-sound/mode/quiz_mode";
+    static final String SOUNDS = RESOURCES + "sound/a4-sound/greet/start_quiz.wav";
+    
+    String initiateQuiz;
+
+    public QuizTimeMotion(String initiateQuiz) {
+        this.initiateQuiz = initiateQuiz;
+    }
 
     public void run() {
         System.out.println("QuizTime running...");
@@ -27,11 +33,10 @@ public class QuizTimeMotion {
             CRobotUtil.Log(TAG, "Servo On");
             motion.ServoOn();
 
-            pose.setLED_Sota(Color.GREEN, Color.GREEN, 255, Color.GREEN);
+            pose.setLED_Sota(Color.WHITE, Color.WHITE, 255, Color.WHITE);
             motion.play(pose, 1000);
 
-            int index = (int) (Math.random() * 2) + 1;
-            CPlayWave.PlayWave(SOUNDS + String.valueOf(index) +".wav");
+            CPlayWave.PlayWave(this.initiateQuiz);
             
             pose = new CRobotPose();
             pose.SetPose(new Byte[] {1, 2, 3, 4, 5, 6, 7, 8}, 
@@ -68,14 +73,14 @@ public class QuizTimeMotion {
 
             motion.ServoOff();
             pose = new CRobotPose();
-            pose.setLED_Sota(Color.BLACK, Color.BLACK, 0, Color.BLACK);
+            pose.setLED_Sota(Color.WHITE, Color.WHITE, 0, Color.WHITE);
             motion.play(pose, 500);
             motion.waitEndinterpAll();
         }
     }
 
     public static void main(String[] args) {
-        QuizTimeMotion quiz = new QuizTimeMotion();
+        QuizTimeMotion quiz = new QuizTimeMotion(SOUNDS);
         quiz.run();
     }
 }

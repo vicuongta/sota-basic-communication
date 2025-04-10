@@ -15,4 +15,5 @@ public class RobotBlackboard {
     // Idle state variables
     public boolean faceDetected = false;
     public boolean motionDetected = false;
+    public String greetPath = filePath + "greet/";
 }

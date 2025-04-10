@@ -70,11 +70,11 @@ public class ComfortMotion {
             CRobotUtil.wait(2000);   //pause the program / current thread
             motion.waitEndinterpAll();
 
-            CPlayWave.PlayWave(this.wrong);
-            CRobotUtil.wait(3000);   //pause the program / current thread
+            CPlayWave.PlayWave_wait(this.wrong);
+            // CRobotUtil.wait(3000);   //pause the program / current thread
 
-            CPlayWave.PlayWave(this.answer);
-            CRobotUtil.wait(3000);   //pause the program / current thread
+            CPlayWave.PlayWave_wait(this.answer);
+            CRobotUtil.wait(500);   //pause the program / current thread
 
             motion.ServoOff();
             pose = new CRobotPose();

@@ -2,44 +2,65 @@ package AS4;
 
 import com.badlogic.gdx.ai.btree.BehaviorTree;
 import com.badlogic.gdx.ai.btree.branch.Selector;
+import com.badlogic.gdx.ai.btree.branch.Sequence;
 import com.badlogic.gdx.ai.btree.Task.Status;
 
 import AS4.behaviors.*;
 import AS4.conditions.*;
+import AS4.tasks.DetectFaceFromMotion;
+import jp.vstone.RobotLib.CRobotMem;
+import jp.vstone.RobotLib.CRobotUtil;
+import jp.vstone.RobotLib.CSotaMotion;
+import jp.vstone.camera.CRoboCamera;
 
 public class Main {
+
+    private static CRoboCamera cam;
+
+    // Initialize camera and motion here safely
+    static {
+        try {
+            CRobotMem mem = new CRobotMem();
+            CSotaMotion motion = new CSotaMotion(mem);
+            if (mem.Connect()) {
+                motion.InitRobot_Sota();
+                cam = new CRoboCamera("/dev/video0", motion);
+                CRobotUtil.wait(1000); // Give time to stabilize
+            } else {
+                System.err.println("Failed to connect to Sota memory!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     void run() {
         RobotBlackboard bb = new RobotBlackboard(); // shared blackboard
     
         BehaviorTree<RobotBlackboard> quizTree = QuizGameBehavior.createQuizTree(bb);
-        BehaviorTree<RobotBlackboard> faceDetectTree = DetectFaceBehavior.createDetectFaceTree(bb);
     
         @SuppressWarnings("unchecked")
         BehaviorTree<RobotBlackboard> tree = new BehaviorTree<>(
-                new Selector<RobotBlackboard>(
-                        new HasFaceDetected(),
-                        new SubTreeTask<>(faceDetectTree)
-                )
+            new Sequence<RobotBlackboard>(
+                new Selector<RobotBlackboard>( 
+                    new HasFaceDetected(),
+                    new DetectFaceFromMotion(cam)
+                )//,
+                // new Selector<RobotBlackboard> (
+                //     new HasAnswerDetected(),
+                //     new SubTreeTask<>(quizTree)
+                // )
+            )    
         );
         tree.setObject(bb);
     
-        final int MAX_TICKS = 10;
+        final int MAX_TICKS = 20;
         int ticks = 0;
     
         while (ticks < MAX_TICKS) {
             System.out.println("\nTick: " + ticks + " Start");
     
             tree.step(); // Step the behavior tree
-    
-            // Since the root of tree is a Selector, get it
-            Selector<RobotBlackboard> selector = (Selector<RobotBlackboard>) tree.getChild(0);
-    
-            Status firstChildStatus = selector.getChild(0).getStatus();
-            Status secondChildStatus = selector.getChild(1).getStatus();
-    
-            System.out.println("First child (HasFaceDetected) status: " + firstChildStatus);
-            System.out.println("Second child (SubTreeTask for faceDetectTree) status: " + secondChildStatus);
     
             Status status = tree.getStatus();
             System.out.println("Tick: " + ticks + " status: " + status);
@@ -52,7 +73,6 @@ public class Main {
             ticks++;
         }
     }
-    
 
     public static void main(String[] args) {
         Main main = new Main();

@@ -34,7 +34,6 @@ public class CheerUpMotion {
             motion.ServoOn();
 
             pose.setLED_Sota(Color.GREEN, Color.GREEN, 255, Color.GREEN);
-            // motion.play(pose, 1000);
 
             // Initial pose
             pose = new CRobotPose();
@@ -46,9 +45,6 @@ public class CheerUpMotion {
                         
             // Answer correct 
             CPlayWave.PlayWave(this.sound);
-            CRobotUtil.wait(6000);   //pause the program / current thread
-            CPlayWave.PlayWave(this.answer);
-            // Play cheering pose
             boolean raise = true;
             for (int i = 0; i < 5; i++) {
                 if (raise) {
@@ -65,6 +61,9 @@ public class CheerUpMotion {
                 motion.play(pose, 1000);
                 motion.waitEndinterpAll();
             }
+            CPlayWave.PlayWave(this.answer);
+            // Play cheering pose
+           
             // CRobotUtil.wait(500);   //pause the program / current thread
             
             // Reset pose
@@ -75,7 +74,7 @@ public class CheerUpMotion {
             motion.play(pose, 1000);
             motion.waitEndinterpAll();
 
-            CRobotUtil.wait(5000);   //pause the program / current thread
+            CRobotUtil.wait(500);   //pause the program / current thread
 
             motion.ServoOff();
             pose = new CRobotPose();

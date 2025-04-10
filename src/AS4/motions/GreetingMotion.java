@@ -4,11 +4,15 @@ import java.awt.Color;
 
 import jp.vstone.RobotLib.*;
 
-public class ElbowWaveMotion {
+public class GreetingMotion {
     static final String TAG = "ElbowWave";   // set this to support the Sota logging system
     static final String RESOURCES = "../resources/";
     static final String SOUNDS = RESOURCES + "sound/a4-sound/greet/greeting.wav";
-
+    String greet;
+    
+    public GreetingMotion(String greet) {
+        this.greet = greet;
+    }
     public void run() {
         System.out.println("ElbowWave running...");
 
@@ -29,7 +33,7 @@ public class ElbowWaveMotion {
             pose.setLED_Sota(Color.WHITE, Color.WHITE, 255, Color.WHITE);
             motion.play(pose, 1000);
 
-            CPlayWave.PlayWave(SOUNDS);
+            CPlayWave.PlayWave(this.greet); // play greeting sound
             
             pose = new CRobotPose();
             pose.SetPose(new Byte[] {1, 2, 3, 4, 5, 6, 7, 8}, 
@@ -39,7 +43,7 @@ public class ElbowWaveMotion {
             motion.waitEndinterpAll();   // also async public boolean isEndInterpAll()
             
             boolean wave = true;
-            for (int i = 0; i < 7; i++) {
+            for (int i = 0; i < 5; i++) {
                 if (wave) {
                     pose.SetPose(new Byte[] {1, 2, 3, 4, 5, 6, 7, 8}, 
                         new Short[]{0, -714, -659, -267, 250, 20, -161, 8}
@@ -66,14 +70,9 @@ public class ElbowWaveMotion {
 
             motion.ServoOff();
             pose = new CRobotPose();
-            pose.setLED_Sota(Color.BLACK, Color.BLACK, 0, Color.BLACK);
+            pose.setLED_Sota(Color.WHITE, Color.WHITE, 0, Color.WHITE);
             motion.play(pose, 500);
             motion.waitEndinterpAll();
         }
-    }
-
-    public static void main(String[] args) {
-        ElbowWaveMotion elbowWave = new ElbowWaveMotion();
-        elbowWave.run();
     }
 }
