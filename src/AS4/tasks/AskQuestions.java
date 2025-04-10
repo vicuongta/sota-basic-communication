@@ -23,7 +23,9 @@ public class AskQuestions extends LeafTask<RobotBlackboard> {
         path = bb.quizPath + "questions/"; // path to the question sound files
 
         try {  
-            AskMotion ask = new AskMotion(question, path+"Qphrase.wav");
+            String questionNum = path.substring(path.lastIndexOf("/"), path.lastIndexOf("."));
+
+            AskMotion ask = new AskMotion(question, path+"list"+questionNum+".wav", path+"Qphrase.wav");
             ask.run();
         }  catch (Exception e) {
             e.printStackTrace();

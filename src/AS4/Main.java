@@ -45,11 +45,11 @@ public class Main {
                 new Selector<RobotBlackboard>( 
                     new HasFaceDetected(),
                     new DetectFaceFromMotion(cam)
-                )//,
-                // new Selector<RobotBlackboard> (
-                //     new HasAnswerDetected(),
-                //     new SubTreeTask<>(quizTree)
-                // )
+                ),
+                new Selector<RobotBlackboard> (
+                    new HasInteractionDone(),
+                    new SubTreeTask<>(quizTree)
+                )
             )    
         );
         tree.setObject(bb);

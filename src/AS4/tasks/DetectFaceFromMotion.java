@@ -4,6 +4,8 @@ import com.badlogic.gdx.ai.btree.LeafTask;
 import com.badlogic.gdx.ai.btree.Task;
 
 import AS4.RobotBlackboard;
+import AS4.motions.GreetingMotion;
+import AS4.motions.QuizTimeMotion;
 import jp.vstone.RobotLib.*;
 import jp.vstone.camera.*;
 
@@ -12,8 +14,11 @@ import java.time.Instant;
 
 public class DetectFaceFromMotion extends LeafTask<RobotBlackboard> {
     private static final int MOTION_DETECT_TIME_SECONDS = 10;
-    private static final double MOTION_THRESHOLD = 0.01;
+    private static final double MOTION_THRESHOLD = 0.02;
     private static final int FACE_DETECT_TIME_SECONDS = 5;
+
+    final String GREET_SOUND = "greeting.wav";
+    final String START_QUIZ_SOUND = "start_quiz.wav";
 
     private CRoboCamera cam;
 
@@ -80,6 +85,12 @@ public class DetectFaceFromMotion extends LeafTask<RobotBlackboard> {
             if (Duration.between(startTime, Instant.now()).getSeconds() >= FACE_DETECT_TIME_SECONDS) {
                 System.out.println("Face not detected in time.");
                 cam.StopFaceDetect();
+                GreetingMotion greet = new GreetingMotion(bb.greetPath + GREET_SOUND);
+                greet.run();
+                CRobotUtil.wait(5000);
+                QuizTimeMotion quizTime = new QuizTimeMotion(bb.greetPath + START_QUIZ_SOUND);
+                quizTime.run();
+                CRobotUtil.wait(3000);
                 return Status.SUCCEEDED; // If face is not detected, it should return FAILED
             }
 

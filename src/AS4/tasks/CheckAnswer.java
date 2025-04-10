@@ -28,9 +28,6 @@ public class CheckAnswer extends LeafTask<RobotBlackboard> {
         expectedAnswer = getObject().expectedAnswer.trim(); // get the expected answer from the blackboard
         userAnswerQuiz = getObject().userAnswer.trim(); // get the user answer from the blackboard
 
-        // System.out.println("Expected answer: " + expectedAnswer); // print the expected answer
-        // System.out.println("User answer: " + userAnswerQuiz); // print the user answer
-        // System.out.println(userAnswerQuiz.equalsIgnoreCase(expectedAnswer));
         try {
             int index = (int)(Math.random() * 3 + 1); // random complement sound
             String end = String.valueOf(index) + ".wav"; // 1.wav, 2.wav, 3.wav
@@ -44,7 +41,6 @@ public class CheckAnswer extends LeafTask<RobotBlackboard> {
             }
             int index1 = (int)(Math.random() * 2 + 1);
             String end2 = String.valueOf(index1) + ".wav";
-            // CRobotUtil.wait(3000);
             CPlayWave.PlayWave_wait(getObject().quizPath + "questions/next_question" + end2); // play the next question sound file 1 or 2
         } catch (Exception e) {
             e.printStackTrace();

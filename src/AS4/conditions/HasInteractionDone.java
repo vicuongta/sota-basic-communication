@@ -5,7 +5,7 @@ import com.badlogic.gdx.ai.btree.Task;
 
 import AS4.RobotBlackboard;
 
-public class HasAnswerDetected extends LeafTask<RobotBlackboard> {
+public class HasInteractionDone extends LeafTask<RobotBlackboard> {
     @Override
     public Status execute() {
         RobotBlackboard bb = getObject();
@@ -18,6 +18,6 @@ public class HasAnswerDetected extends LeafTask<RobotBlackboard> {
 
     @Override
     protected Task<RobotBlackboard> copyTo(Task<RobotBlackboard> task) {
-        return new HasAnswerDetected();
+        return new HasInteractionDone();
     }
 }

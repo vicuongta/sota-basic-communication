@@ -8,11 +8,11 @@ public class CheerUpMotion {
     static final String TAG = "CheerUpMotion";   // set this to support the Sota logging system
     static final String RESOURCES = "../resources/";
     static final String SOUNDS = RESOURCES + "sound/a4-sound/mode/quiz_mode";
-    String sound;
+    String correct;
     String answer;
 
-    public CheerUpMotion(String sound, String answer) {
-        this.sound = sound;
+    public CheerUpMotion(String correct, String answer) {
+        this.correct = correct;
         this.answer = answer;
     }
 
@@ -35,16 +35,17 @@ public class CheerUpMotion {
 
             pose.setLED_Sota(Color.GREEN, Color.GREEN, 255, Color.GREEN);
 
+            CPlayWave.PlayWave(this.correct);
+
             // Initial pose
             pose = new CRobotPose();
             pose.SetPose(new Byte[] {1, 2, 3, 4, 5, 6, 7, 8}, 
                 new Short[]{0, -791, -666, 757, 718, 13, -36, 7}
             ); 
             motion.play(pose, 1000);
-            motion.waitEndinterpAll();   // also async public boolean isEndInterpAll()
-                        
+            // motion.waitEndinterpAll();   // also async public boolean isEndInterpAll()
+                    
             // Answer correct 
-            CPlayWave.PlayWave(this.sound);
             boolean raise = true;
             for (int i = 0; i < 5; i++) {
                 if (raise) {
@@ -61,10 +62,10 @@ public class CheerUpMotion {
                 motion.play(pose, 1000);
                 motion.waitEndinterpAll();
             }
-            CPlayWave.PlayWave(this.answer);
             // Play cheering pose
-           
-            // CRobotUtil.wait(500);   //pause the program / current thread
+            
+            CPlayWave.PlayWave(this.answer);
+            CRobotUtil.wait(500);   //pause the program / current thread
             
             // Reset pose
             pose.SetPose(new Byte[] {1, 2, 3, 4, 5, 6, 7, 8}, 

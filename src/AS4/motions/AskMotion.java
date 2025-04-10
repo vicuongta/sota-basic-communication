@@ -8,10 +8,12 @@ public class AskMotion {
     static final String RESOURCES = "../resources/";
     static final String SOUNDS = RESOURCES + "sound/a4-sound/mode/quiz_mode";
     String question;
+    String list;
     String askAnswer;
 
-    public AskMotion(String question, String askAnswer) {
+    public AskMotion(String question, String list, String askAnswer) {
         this.question = question;
+        this.list = list;
         this.askAnswer = askAnswer;
     }
 
@@ -38,11 +40,12 @@ public class AskMotion {
             CRobotUtil.wait(4000);
 
             // Ask for answer
-            CPlayWave.PlayWave(this.askAnswer);
             pose.SetPose(new Byte[] {1, 2, 3, 4, 5, 6, 7, 8}, 
                 new Short[]{0, -369, -82, 425, 21, -85, -114, -22}
             ); // initial pose
-
+            CPlayWave.PlayWave_wait(this.list);
+            CPlayWave.PlayWave(this.askAnswer);
+            
             motion.play(pose, 1000);
             motion.waitEndinterpAll();
             CRobotUtil.wait(1000);   //pause the program / current thread
