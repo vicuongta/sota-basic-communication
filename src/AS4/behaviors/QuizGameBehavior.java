@@ -40,7 +40,7 @@ public class QuizGameBehavior {
 
 
         Collections.shuffle(allQuestions); // randomize 5 questions
-        List<QuizEntry> selectedQuestions = allQuestions.subList(0, 5);
+        List<QuizEntry> selectedQuestions = allQuestions.subList(0, 2);
         bb.totalQuestions = selectedQuestions.size(); // set the number of questions to ask
         
         // Create the behavior tree sequence

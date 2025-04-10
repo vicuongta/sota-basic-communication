@@ -1,16 +1,16 @@
-four /1e-3/
+four /1e-10/
 one /1e-2/
 ten /1e-2/
 
-mars /1e-3/
+mars /1e-10/
 venus /1e-2/
 earth /1e-2/
 
-paris /1e-3/
+paris /1e-10/
 ottawa /1e-2/
 london /1e-2/
 
-water /1e-3/
+water /1e-10/
 beer /1e-3/
 wine /1e-3/
 
@@ -28,9 +28,9 @@ summer /1e-3/
 spring /1e-2/
 winter /1e-2/
 
-blue /1e-3/
+blue /1e-5/
 green /1e-2/
 red /1e-2/
 yellow /1e-3/
-purple /1e-2/
+purple /1e-10/
 violet /1e-2/

@@ -65,6 +65,7 @@ public class CheerUpMotion {
             }
             // Play cheering pose
             
+            CRobotUtil.wait(500);   //pause the program / current thread
             CPlayWave.PlayWave(this.answer);
             CRobotUtil.wait(500);   //pause the program / current thread
             

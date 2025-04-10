@@ -4,13 +4,13 @@ import java.awt.Color;
 
 import jp.vstone.RobotLib.*;
 
-public class GreetingMotion {
+public class WaveElbowMotion {
     static final String TAG = "ElbowWave";   // set this to support the Sota logging system
     static final String RESOURCES = "../resources/";
     static final String SOUNDS = RESOURCES + "sound/a4-sound/greet/greeting.wav";
     String greet;
     
-    public GreetingMotion(String greet) {
+    public WaveElbowMotion(String greet) {
         this.greet = greet;
     }
     public void run() {
@@ -29,6 +29,9 @@ public class GreetingMotion {
             
             CRobotUtil.Log(TAG, "Servo On");
             motion.ServoOn();
+
+            pose.setLED_Sota(Color.BLACK, Color.BLACK, 255, Color.BLACK);
+            motion.play(pose, 1000);
 
             pose.setLED_Sota(Color.WHITE, Color.WHITE, 255, Color.WHITE);
             motion.play(pose, 1000);

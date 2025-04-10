@@ -7,7 +7,7 @@ import AS4.RobotBlackboard;
 import AS4.motions.AskMotion;
 import AS4.motions.CheerUpMotion;
 import AS4.motions.ComfortMotion;
-import AS4.motions.GreetingMotion;
+import AS4.motions.WaveElbowMotion;
 import jp.vstone.RobotLib.CPlayWave;
 
 public class CheckAnswer extends LeafTask<RobotBlackboard> {
@@ -51,7 +51,7 @@ public class CheckAnswer extends LeafTask<RobotBlackboard> {
                 CPlayWave.PlayWave_wait(getObject().quizPath + "questions/next_question" + end2); // play the next question sound file 1 or 2
             }
             if (getObject().questionAsked == getObject().totalQuestions) {
-                GreetingMotion bye = new GreetingMotion(goodByeSpeech);
+                WaveElbowMotion bye = new WaveElbowMotion(goodByeSpeech);
                 bye.run();
                 getObject().interactionDone = true;
             }

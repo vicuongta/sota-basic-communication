@@ -4,7 +4,7 @@ import com.badlogic.gdx.ai.btree.LeafTask;
 import com.badlogic.gdx.ai.btree.Task;
 
 import AS4.RobotBlackboard;
-import AS4.motions.GreetingMotion;
+import AS4.motions.WaveElbowMotion;
 import AS4.motions.QuizTimeMotion;
 import jp.vstone.RobotLib.*;
 import jp.vstone.camera.*;
@@ -85,7 +85,7 @@ public class DetectFaceFromMotion extends LeafTask<RobotBlackboard> {
             if (Duration.between(startTime, Instant.now()).getSeconds() >= FACE_DETECT_TIME_SECONDS) {
                 System.out.println("Face not detected in time.");
                 cam.StopFaceDetect();
-                GreetingMotion greet = new GreetingMotion(bb.greetPath + GREET_SOUND);
+                WaveElbowMotion greet = new WaveElbowMotion(bb.greetPath + GREET_SOUND);
                 greet.run();
                 CRobotUtil.wait(7000);
                 QuizTimeMotion quizTime = new QuizTimeMotion(bb.greetPath + START_QUIZ_SOUND);
