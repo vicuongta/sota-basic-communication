@@ -42,10 +42,10 @@ public class Main {
         @SuppressWarnings("unchecked")
         BehaviorTree<RobotBlackboard> tree = new BehaviorTree<>(
             new Sequence<RobotBlackboard>(
-                // new Selector<RobotBlackboard>( 
-                //     new HasFaceDetected(),
-                //     new DetectFaceFromMotion(cam)
-                // ),
+                new Selector<RobotBlackboard>( 
+                    new HasFaceDetected(),
+                    new DetectFaceFromMotion(cam)
+                ),
                 new Selector<RobotBlackboard> (
                     new HasQuizFinished(),
                     new SubTreeTask<>(quizTree)
