@@ -47,7 +47,7 @@ public class Main {
                     new DetectFaceFromMotion(cam)
                 ),
                 new Selector<RobotBlackboard> (
-                    new HasInteractionDone(),
+                    new HasQuizFinished(),
                     new SubTreeTask<>(quizTree)
                 )
             )    

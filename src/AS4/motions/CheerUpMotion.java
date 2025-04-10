@@ -34,6 +34,7 @@ public class CheerUpMotion {
             motion.ServoOn();
 
             pose.setLED_Sota(Color.GREEN, Color.GREEN, 255, Color.GREEN);
+            motion.play(pose, 1000);
 
             CPlayWave.PlayWave(this.correct);
 
@@ -78,9 +79,6 @@ public class CheerUpMotion {
             CRobotUtil.wait(500);   //pause the program / current thread
 
             motion.ServoOff();
-            pose = new CRobotPose();
-            pose.setLED_Sota(Color.WHITE, Color.WHITE, 0, Color.WHITE);
-            motion.play(pose, 500);
             motion.waitEndinterpAll();
         }
     }

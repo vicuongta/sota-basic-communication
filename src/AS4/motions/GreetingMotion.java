@@ -70,7 +70,10 @@ public class GreetingMotion {
 
             motion.ServoOff();
             pose = new CRobotPose();
-            pose.setLED_Sota(Color.WHITE, Color.WHITE, 0, Color.WHITE);
+            pose.setLED_Sota(Color.BLACK, Color.BLACK, 0, Color.BLACK);
+            pose.SetPose(new Byte[] {1, 2, 3, 4, 5, 6, 7, 8}, 
+                new Short[]{0, -791, -666, 757, 718, 13, -36, 7}
+            ); // initial pose
             motion.play(pose, 500);
             motion.waitEndinterpAll();
         }

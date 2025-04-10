@@ -9,8 +9,8 @@ public class RobotBlackboard {
     public String expectedAnswer = ""; 
     public String userAnswer = ""; // used for user answer in quiz mode
     public String quizPath = filePath + "quiz/"; // path to quiz files
-    public boolean hasReceivedAnswer = false; // used to check if the user has answered the quiz question
     public int questionAsked = 0;
+    public boolean interactionDone = false;
 
     // Idle state variables
     public boolean faceDetected = false;

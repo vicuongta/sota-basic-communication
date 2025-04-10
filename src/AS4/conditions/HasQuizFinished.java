@@ -5,11 +5,13 @@ import com.badlogic.gdx.ai.btree.Task;
 
 import AS4.RobotBlackboard;
 
-public class HasInteractionDone extends LeafTask<RobotBlackboard> {
+public class HasQuizFinished extends LeafTask<RobotBlackboard> {
+
     @Override
     public Status execute() {
         RobotBlackboard bb = getObject();
-        if (bb.hasReceivedAnswer) {
+
+        if (bb.questionAsked >= bb.totalQuestions && bb.interactionDone) {
             return Status.SUCCEEDED;
         } else {
             return Status.FAILED;
@@ -18,6 +20,6 @@ public class HasInteractionDone extends LeafTask<RobotBlackboard> {
 
     @Override
     protected Task<RobotBlackboard> copyTo(Task<RobotBlackboard> task) {
-        return new HasInteractionDone();
+        return new HasQuizFinished();
     }
 }

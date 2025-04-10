@@ -15,7 +15,7 @@ import java.time.Instant;
 public class DetectFaceFromMotion extends LeafTask<RobotBlackboard> {
     private static final int MOTION_DETECT_TIME_SECONDS = 10;
     private static final double MOTION_THRESHOLD = 0.02;
-    private static final int FACE_DETECT_TIME_SECONDS = 5;
+    private static final int FACE_DETECT_TIME_SECONDS = 3;
 
     final String GREET_SOUND = "greeting.wav";
     final String START_QUIZ_SOUND = "start_quiz.wav";
@@ -87,11 +87,12 @@ public class DetectFaceFromMotion extends LeafTask<RobotBlackboard> {
                 cam.StopFaceDetect();
                 GreetingMotion greet = new GreetingMotion(bb.greetPath + GREET_SOUND);
                 greet.run();
-                CRobotUtil.wait(5000);
+                CRobotUtil.wait(7000);
                 QuizTimeMotion quizTime = new QuizTimeMotion(bb.greetPath + START_QUIZ_SOUND);
                 quizTime.run();
                 CRobotUtil.wait(3000);
-                return Status.SUCCEEDED; // If face is not detected, it should return FAILED
+                // If face is not detected, it should return FAILED but since face detection is not working, we let it pass through
+                return Status.SUCCEEDED; 
             }
 
             return Status.RUNNING;

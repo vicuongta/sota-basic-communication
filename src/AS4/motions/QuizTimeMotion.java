@@ -33,7 +33,7 @@ public class QuizTimeMotion {
             CRobotUtil.Log(TAG, "Servo On");
             motion.ServoOn();
 
-            pose.setLED_Sota(Color.WHITE, Color.WHITE, 255, Color.WHITE);
+            pose.setLED_Sota(Color.CYAN, Color.CYAN, 255, Color.CYAN);
             motion.play(pose, 1000);
 
             CPlayWave.PlayWave(this.initiateQuiz);
