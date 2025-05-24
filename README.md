@@ -51,7 +51,7 @@ This project implements a behavior for the **Sota robot** that allows it to dete
   - **Game branch:**
     - Directly begin the quiz
       
-![Alt text](./resources/Initial BT.png)
+![Initial Behavior Tree](./resources/Initial_BT.png)
 
 **Final Implementation:**
 - Detection → Greeting → Quiz Game
