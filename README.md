@@ -59,6 +59,8 @@ This project implements a behavior for the **Sota robot** that allows it to dete
     - Limitations in natural language understanding
     - Poor PocketSphinx performance on Sota’s hardware
     - Complexity of parsing open-ended responses
+   
+![Final Behavior Tree](./resources/Final_BT.png)
 
 This simplification made the behavior more stable and focused on providing a fun, affective quiz experience.
 
