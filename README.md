@@ -95,6 +95,6 @@ COMP4060 - Group 1
 
 ## 📷 Demo
 
-[Watch Demo Video](https://drive.google.com/drive/folders/16RnWQnmJJ8GYPc94vMmpFl3PH8XdxSgj?usp=sharing)
+[Watch Demo Videos](https://drive.google.com/drive/folders/16RnWQnmJJ8GYPc94vMmpFl3PH8XdxSgj?usp=sharing)
 
 ---
